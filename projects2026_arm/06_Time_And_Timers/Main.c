@@ -25,6 +25,64 @@
  * Build:     build.bat
  * Simulate:  simulate.bat, paste diagram.json into the Wokwi tab, upload
  *            Main.elf, then click the HC-SR04 to get its distance slider.
+ *
+ * ============================================================================
+ *  LAB CHECK - one task per student, shown to the instructor
+ * ============================================================================
+ *  Your instructor gives you ONE task number.  For that task:
+ *
+ *    1. PREDICT.  Before you build, write down what you expect to see:
+ *       the LEDs, the servo, and the numbers in the report line.
+ *    2. CHANGE.   Make only the change the task asks for.
+ *    3. RUN.      Build, upload, drag the HC-SR04 slider, and compare
+ *                 what happens with your prediction.
+ *    4. EXPLAIN.  In one sentence: why did it behave that way?  If your
+ *                 prediction was wrong, say which line you misread.
+ *    5. SHOW.     `git diff Main.c` - the instructor reads your change
+ *                 there.  Afterwards, `git checkout Main.c` restores it.
+ *
+ *  T1  Bar direction.  Make the proximity bar fill from PB7 downwards
+ *      instead of from PB0 upwards.             [proximity_bar, bar_write]
+ *      Predict: which LEDs are lit at 150 cm?  At 50 cm?
+ *
+ *  T2  Servo direction.  Make the gauge swing the other way: NEAR gives
+ *      SERVO_MIN_US and FAR gives SERVO_MAX_US.             [gauge_us]
+ *      Predict: the "servo" number in the report at 0 cm and at 200 cm.
+ *
+ *  T3  Ping rate.  Change PING_MS from 100 to 50.
+ *      Predict: by how much does "exti" grow per second now, and why?
+ *
+ *  T4  Slew rate.  Change SERVO_SLEW_US from 20 to 200.
+ *      Predict: how many 20 ms frames does the servo now need to swing
+ *      from 1000 us to 2000 us?  What do you see on the servo?
+ *
+ *  T5  Full scale.  Change FAR_CM from 200 to 100.
+ *      Predict: at what distance does the first LED light?  All eight?
+ *
+ *  T6  A dot, not a bar.  Make proximity_bar() light exactly ONE LED,
+ *      the one at the bar's tip, instead of a filled bar.
+ *      Predict: which single LED is lit at 100 cm?
+ *
+ *  T7  Danger light.  Keep LD4 ON (not blinking) while the object is
+ *      closer than 20 cm, and blinking as now otherwise.   [heartbeat]
+ *      Predict: what does LD4 do at 25 cm, 15 cm, and 25 cm again?
+ *
+ *  T8  Report rate.  Change REPORT_MS from 1000 to 250.
+ *      Predict: the "TIM3 n/s" number now.  Is the timer slower, or is
+ *      the label wrong?  Read how that number is computed.
+ *
+ *  T9  Timer clock.  In servo_init() make TIM3 count at 2 MHz instead
+ *      of 1 MHz (change PSC only - nothing else).          [TIM3->PSC]
+ *      Predict: "TIM3 n/s", the real servo pulse width in us, and the
+ *      servo's position.  Which register holds the pulse width?
+ *
+ *  T10 Accuracy.  Wokwi's HC-SR04 is 58.8 us per cm, not 58.  Change the
+ *      cm calculation to integer maths that divides by 58.8.
+ *      Predict: the cm reading with the slider at 151 cm, before and
+ *      after.  Why not just write `us / 58.8`?
+ *
+ *  Pass: a written prediction, a working demo, a one-sentence reason,
+ *  and the name of the register (or variable) your change ends up in.
  */
 
 #include <stdint.h>

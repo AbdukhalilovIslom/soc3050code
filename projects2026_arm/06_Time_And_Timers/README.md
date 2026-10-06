@@ -16,7 +16,7 @@ so the two dividers check each other.
 |---|---|
 | `Slide.md` | the lecture - 23 pages as rendered: the title, the two pin-map slides, then the numbered slides, each register block's one-page map before its details |
 | `Lab.md` | the lab: eight parts, ~2 hours, guided, **nothing handed in** |
-| `Main.c` | SysTick, TIM3 PWM + update IRQ, TIM14 capture IRQ, a non-blocking scheduler loop, and a banner that reads every clock's configuration back |
+| `Main.c` | SysTick, TIM3 PWM + update IRQ, TIM14 capture IRQ, EXTI timestamping of the echo, a non-blocking scheduler loop, and a banner that reads every clock's configuration back. Its header carries the **lab check**: ten one-change tasks (T1-T10), one per student, each predicted, run, explained and shown with `git diff` |
 | `build.bat` | `LIBS=retarget`; `gpio.h` is header-only |
 | `simulate.bat` | always rebuilds, then opens the Wokwi board |
 | `diagram.json` | board, LED bar PB0–PB7, `wokwi-servo` on PA6, `wokwi-hc-sr04` TRIG PA8 / ECHO PA7 (initial distance 100 cm). **Required** |

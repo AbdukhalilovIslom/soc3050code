@@ -274,6 +274,16 @@ report or the servo. Only `millis()` and the `now - then` pattern of slide 4.
 
 ---
 
+## Lab check — one task, shown to the instructor
+
+The header comment of `Main.c` lists ten small tasks, T1–T10. Your instructor
+gives you one. For it: write a **prediction** first, make only that change,
+run it, **explain** in one sentence why it behaved that way, and show the
+change with `git diff Main.c`. Afterwards `git checkout Main.c` restores the
+original for the next exercise.
+
+---
+
 ## Where to go next
 
 - Change `ping_at += PING_MS` to `ping_at = now`. Add a counter of pings and
