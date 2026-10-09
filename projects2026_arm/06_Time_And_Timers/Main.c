@@ -325,8 +325,8 @@ static uint32_t gauge_us(uint32_t cm)
 
 static uint8_t proximity_bar(uint32_t cm)
 {
-    uint32_t lit = (FAR_CM - clamp_cm(cm)) * 8u / FAR_CM;   /* 0..8 LEDs */
-    return (uint8_t)((1u << lit) - 1u);
+    uint32_t lit = ((FAR_CM - clamp_cm(cm)) * 8u + FAR_CM / 2u) / FAR_CM;
+    return (uint8_t)(0xFFu << (8u - lit));
 }
 
 /* ============================================================================
